@@ -1,8 +1,12 @@
 import { useLoaderData } from "react-router-dom";
-import { clientes } from "../data/clientes";
+// import { clientes } from "../data/clientes";
 import { Cliente } from "../components/Cliente";
+import { obtenerClientes } from "../data/clientes";
 
 export const loader = () => {
+	// console.log(import.meta.env);
+	const clientes = obtenerClientes();
+
 	return clientes;
 };
 

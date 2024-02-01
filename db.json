@@ -1,0 +1,34 @@
+{
+  "clientes": [
+    {
+      "id": "2",
+      "nombre": "Karen",
+      "telefono": "138198313",
+      "email": "karen@juan.com",
+      "empresa": "Karen Empresas Innovadoras S.A."
+    },
+    {
+      "id": "4",
+      "nombre": "Miguel",
+      "telefono": "319381983",
+      "email": "miguel@juan.com",
+      "empresa": "Miguel Desarrollos Tecnológicos Global Inc"
+    },
+    {
+      "nombre": "Ariel Fajardo",
+      "empresa": "Hnos Asociados S.A",
+      "email": "arielfajardo1991@gmail.com",
+      "telefono": "3055935383",
+      "notas": "El cliente necesita un servicio de housing",
+      "id": "a8dd"
+    },
+    {
+      "id": "8d2c",
+      "nombre": "Ariel Fajardo desde React",
+      "empresa": "BM-CARGOS",
+      "email": "arielfajardo1991@gmail.com",
+      "telefono": "8099756026",
+      "notas": "Probando la app que funcione correctamente"
+    }
+  ]
+}

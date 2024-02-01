@@ -1,39 +1,73 @@
-export const clientes = [
-	{
-		id: 1,
-		nombre: "Juan",
-		telefono: 102013313,
-		email: "juan@juan.com",
-		empresa: "Codigo Con Juan",
-	},
-	{
-		id: 2,
-		nombre: "Karen",
-		telefono: 138198313,
-		email: "karen@juan.com",
-		empresa: "Karen Empresas Innovadoras S.A.",
-	},
-	{
-		id: 3,
-		nombre: "Josue",
-		telefono: 31983913,
-		email: "josue@juan.com",
-		empresa: "Josué Soluciones Empresariales Ltda",
-	},
-	{
-		id: 4,
-		nombre: "Miguel",
-		telefono: 319381983,
-		email: "miguel@juan.com",
-		empresa:
-			"Miguel Desarrollos Tecnológicos Global Inc",
-	},
-	{
-		id: 5,
-		nombre: "Pedro",
-		telefono: 1398198938,
-		email: "pedro@juan.com",
-		empresa:
-			"Pedro Consultoría Estratégica y Asociados S.C",
-	},
-];
+// Consumiendo los datos del json
+export const obtenerClientes = async () => {
+	const repuesta = await fetch(
+		import.meta.env.VITE_API_URL,
+	);
+	const resultado = await repuesta.json();
+
+	return resultado;
+};
+
+// Enviando los datos del formulario
+export const addClientes = async (datos) => {
+	console.log(datos);
+	try {
+		const repuesta = await fetch(
+			import.meta.env.VITE_API_URL,
+			{
+				method: "POST",
+				body: JSON.stringify(datos),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			},
+		);
+		await repuesta.json();
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+// Para editar los clientes ir a EditarCliente.jsx
+export const obtenerCliente = async (id) => {
+	const repuesta = await fetch(
+		`${import.meta.env.VITE_API_URL}/${id}`,
+	);
+	const resultado = await repuesta.json();
+
+	return resultado;
+};
+
+// Actualizar
+export const actualizarCliente = async (id, datos) => {
+	try {
+		const repuesta = await fetch(
+			`${import.meta.env.VITE_API_URL}/${id}`,
+			{
+				method: "PUT",
+				body: JSON.stringify(datos),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			},
+		);
+		await repuesta.json();
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const eliminarCliente = async (id) => {
+	// console.log("Eliminando.... el id #:", id);
+	try {
+		const repuesta = await fetch(
+			`${import.meta.env.VITE_API_URL}/${id}`,
+			{
+				method: "DELETE",
+			},
+		);
+		await repuesta.json();
+	} catch (error) {
+		console.log(error);
+	}
+};

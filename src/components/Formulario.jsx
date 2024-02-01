@@ -1,5 +1,47 @@
+import { useRef, useState } from "react";
+
 export const Formulario = ({ cliente }) => {
+	// const {} = cliente
 	// console.log(cliente);
+	// console.log(errores?.length);
+	// undefined
+
+	// Realizar comprobaciones y asignar las clases según las condiciones
+	// const clases = `clase-base ${condicion1 ? 'clase-condicion-1' : ''} ${condicion2 ? 'clase-condicion-2' : ''}`;
+
+	const [nombre, setNombre] = useState("");
+	const [empresa, setEmpresa] = useState("");
+	const [email, setEmail] = useState("");
+	const [telefono, setTelefono] = useState("");
+	const [notas, setNotas] = useState("");
+
+	const [inputInteractuado, setInputInteractuado] =
+		useState(false);
+
+	const verificarCaracteres = (valor) =>
+		valor.trim().length > 0;
+
+	const onNombreChange = ({ target }) => {
+		setNombre(target.value);
+
+		setInputInteractuado(true);
+	};
+	const onEmpresaChange = ({ target }) => {
+		setEmpresa(target.value);
+		setInputInteractuado(true);
+	};
+	const onEmailChange = ({ target }) => {
+		setEmail(target.value);
+		setInputInteractuado(true);
+	};
+	const onTelefonoChange = ({ target }) => {
+		setTelefono(target.value);
+		setInputInteractuado(true);
+	};
+	const onNotasChange = ({ target }) => {
+		setNotas(target.value);
+		setInputInteractuado(true);
+	};
 
 	return (
 		<>
@@ -8,12 +50,28 @@ export const Formulario = ({ cliente }) => {
 					Nombre:
 				</span>
 				<input
+					onChange={onNombreChange}
+					// value={nombre}
+					defaultValue={nombre || cliente?.nombre}
 					type="text"
 					id="nombre"
-					placeholder="Nombre del Cliente"
 					name="nombre"
-					className="px-3 py-2 text-slate-800 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1 shadow-slate-500/50"
+					className={`bg-white w-full placeholder:italic border  block  rounded-md py-2 px-3 shadow-sm shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 ${
+						inputInteractuado
+							? verificarCaracteres(nombre)
+								? "focus:border-sky-500 focus:ring-sky-500 border border-slate-300 "
+								: " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
+							: ""
+					}   `}
+					placeholder={
+						inputInteractuado
+							? verificarCaracteres(nombre)
+								? ""
+								: "El campo Nombre es requerido"
+							: "Nombre del Cliente"
+					}
 				/>
+				{/* ${condicion2 ? 'clase-condicion-2' : ''}  */}
 			</label>
 
 			<label className="block mb-4">
@@ -21,11 +79,26 @@ export const Formulario = ({ cliente }) => {
 					Empresa:
 				</span>
 				<input
+					onChange={onEmpresaChange}
+					// value={empresa}
+					defaultValue={empresa || cliente?.empresa}
 					id="empresa"
 					type="text"
-					placeholder="Empresa del Cliente"
 					name="empresa"
-					className="px-3 py-2 text-slate-800 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1 shadow-slate-500/50"
+					className={`bg-white w-full placeholder:italic border  block  rounded-md py-2 px-3 shadow-sm shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 ${
+						inputInteractuado
+							? verificarCaracteres(empresa)
+								? "focus:border-sky-500 focus:ring-sky-500 border border-slate-300 "
+								: " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
+							: ""
+					}   `}
+					placeholder={
+						inputInteractuado
+							? verificarCaracteres(empresa)
+								? ""
+								: "El campo Empresa es requerido"
+							: "Empresa del Cliente"
+					}
 				/>
 			</label>
 
@@ -34,11 +107,26 @@ export const Formulario = ({ cliente }) => {
 					E-mail:
 				</span>
 				<input
+					onChange={onEmailChange}
+					// value={email}
+					defaultValue={email || cliente?.email}
 					id="email"
 					type="email"
-					placeholder="Email del Cliente"
 					name="email"
-					className="px-3 py-2 text-slate-800 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1 shadow-slate-500/50"
+					className={`bg-white w-full placeholder:italic border  block  rounded-md py-2 px-3 shadow-sm shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 ${
+						inputInteractuado
+							? verificarCaracteres(email)
+								? "focus:border-sky-500 focus:ring-sky-500 border border-slate-300 "
+								: " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
+							: ""
+					}   `}
+					placeholder={
+						inputInteractuado
+							? verificarCaracteres(email)
+								? ""
+								: "El campo E-mail es requerido"
+							: "Email del Cliente"
+					}
 				/>
 			</label>
 
@@ -47,11 +135,26 @@ export const Formulario = ({ cliente }) => {
 					Teléfono:
 				</span>
 				<input
+					onChange={onTelefonoChange}
+					// value={telefono}
+					defaultValue={telefono || cliente?.telefono}
 					id="telefono"
 					type="tel"
-					placeholder="Teléfono del Cliente"
 					name="telefono"
-					className="px-3 py-2 text-slate-800 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1 shadow-slate-500/50"
+					className={`bg-white w-full placeholder:italic border  block  rounded-md py-2 px-3 shadow-sm shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 ${
+						inputInteractuado
+							? verificarCaracteres(telefono)
+								? "focus:border-sky-500 focus:ring-sky-500 border border-slate-300 "
+								: " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
+							: ""
+					}   `}
+					placeholder={
+						inputInteractuado
+							? verificarCaracteres(telefono)
+								? ""
+								: "El campo Teléfono es requerido"
+							: "Teléfono del Cliente"
+					}
 				/>
 			</label>
 
@@ -60,14 +163,33 @@ export const Formulario = ({ cliente }) => {
 					Notas:
 				</span>
 				<textarea
+					onChange={onNotasChange}
+					// value={notas}
+					defaultValue={notas || cliente?.notas}
 					as="textarea"
 					id="notas"
 					type="text"
-					placeholder="Notas del Cliente"
 					name="notas"
-					className="px-3 py-2 text-slate-800 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1 shadow-slate-500/50 h-40 align-self"
+					className={`bg-white w-full placeholder:italic border  block  rounded-md py-2 px-3 shadow-sm shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 h-40 align-self ${
+						inputInteractuado
+							? verificarCaracteres(notas)
+								? "focus:border-sky-500 focus:ring-sky-500 border border-slate-300 "
+								: " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
+							: ""
+					}   `}
+					placeholder={
+						inputInteractuado
+							? verificarCaracteres(notas)
+								? ""
+								: "El campo Notas es requerido"
+							: "Notas del Cliente"
+					}
 				/>
 			</label>
 		</>
 	);
 };
+
+//! Clases que tenían los input antes de ser validados
+// placeholder="Nombre del Cliente"
+// className="px-3 py-2 text-slate-800 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1 shadow-slate-500/50"

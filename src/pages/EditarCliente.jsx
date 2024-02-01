@@ -1,27 +1,38 @@
 import {
 	useNavigate,
 	Form,
+	useLoaderData,
 	useActionData,
 	redirect,
 } from "react-router-dom";
 import { Formulario } from "../components/Formulario";
 import { Error } from "../components/Error";
-import { addClientes } from "../data/clientes";
 
-// export const action = () => {
-// 	console.log("Enviando el formulario");
-// };
+import {
+	actualizarCliente,
+	obtenerCliente,
+} from "../data/clientes";
 
-export async function action({ request }) {
-	// console.log("request: ", request); console.log("Enviando el formulario");
+export const loader = async ({ params }) => {
+	// console.log(params);
+	const cliente = await obtenerCliente(
+		params.clienteId,
+	);
+	// console.log(cliente);
+	if (Object.values(cliente).length === Error) {
+		throw new Response("", {
+			status: 404,
+			statusText: "No hay Resultados",
+		});
+	}
 
+	return cliente;
+};
+
+export async function action({ request, params }) {
 	const formData = await request.formData();
 
-	// console.log(formData.get("nombre"));
-	// console.log([...formData]);
-
 	const datos = Object.fromEntries(formData);
-	// console.log(datos.nombre.length);
 
 	const email = formData.get("email");
 
@@ -39,33 +50,30 @@ export async function action({ request }) {
 		errores.push("Email no válido");
 	}
 
-	// if (datos.nombre.length <= 0) {
-	// 	errores.push("El campo nombre no puede ir vacío");
-	// }
-
 	// Retornar datos si hay errores
 	if (Object.keys(errores).length) {
 		return errores;
 	}
 
-	await addClientes(datos);
+	// Actualizar el cliente
+	await actualizarCliente(params.clienteId, datos);
 
 	return redirect("/");
-	// return datos;
 }
 
-export const NuevoCliente = () => {
+export const EditarCliente = () => {
 	const navigate = useNavigate();
-	const errores = useActionData(); // Obtener errores useActionData
+	const cliente = useLoaderData();
+	const errores = useActionData();
 
 	return (
 		<>
 			<h1 className="font-black text-3xl text-blue-900">
-				Nuevo Cliente
+				Editar Cliente
 			</h1>
 			<p className="mt-3">
-				Llena todos los campos para registrar un nuevo
-				cliente Clientes
+				A continuación podrás modificar los datos de un
+				cliente
 			</p>
 
 			<div className="flex justify-end mb-20">
@@ -86,12 +94,12 @@ export const NuevoCliente = () => {
 					))}
 
 				<Form method="POST" noValidate>
-					<Formulario />
+					<Formulario cliente={cliente} />
 
 					<input
 						type="submit"
 						className=" cursor-pointer mt-5 w-full bg-blue-800 p-2 rounded-md shadow-sm shadow-black font-bold text-white text-lg hover:bg-blue-700 transition-colors"
-						value="Registrar Cliente"
+						value="Guardar Cambios"
 					/>
 				</Form>
 			</div>
