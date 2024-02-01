@@ -1,11 +1,12 @@
 {
   "clientes": [
     {
-      "id": "2",
-      "nombre": "Karen",
-      "telefono": "138198313",
+      "nombre": "Karen Actualizado Prueba",
+      "empresa": "Karen Empresas Innovadoras S.A.",
       "email": "karen@juan.com",
-      "empresa": "Karen Empresas Innovadoras S.A."
+      "telefono": "138198313",
+      "notas": "Actualizando a Karen",
+      "id": "2"
     },
     {
       "id": "4",

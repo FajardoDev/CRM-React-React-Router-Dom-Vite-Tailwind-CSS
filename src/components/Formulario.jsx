@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 export const Formulario = ({ cliente }) => {
 	// const {} = cliente
@@ -18,6 +18,23 @@ export const Formulario = ({ cliente }) => {
 	const [inputInteractuado, setInputInteractuado] =
 		useState(false);
 
+	const [
+		inputInteractuadoEm,
+		setInputInteractuadoEm,
+	] = useState(false);
+	const [
+		inputInteractuadoEmail,
+		setInputInteractuadoEmail,
+	] = useState(false);
+	const [
+		inputInteractuadoTe,
+		setInputInteractuadoTe,
+	] = useState(false);
+	const [
+		inputInteractuadoNo,
+		setInputInteractuadoNo,
+	] = useState(false);
+
 	const verificarCaracteres = (valor) =>
 		valor.trim().length > 0;
 
@@ -28,19 +45,19 @@ export const Formulario = ({ cliente }) => {
 	};
 	const onEmpresaChange = ({ target }) => {
 		setEmpresa(target.value);
-		setInputInteractuado(true);
+		setInputInteractuadoEm(true);
 	};
 	const onEmailChange = ({ target }) => {
 		setEmail(target.value);
-		setInputInteractuado(true);
+		setInputInteractuadoEmail(true);
 	};
 	const onTelefonoChange = ({ target }) => {
 		setTelefono(target.value);
-		setInputInteractuado(true);
+		setInputInteractuadoTe(true);
 	};
 	const onNotasChange = ({ target }) => {
 		setNotas(target.value);
-		setInputInteractuado(true);
+		setInputInteractuadoNo(true);
 	};
 
 	return (
@@ -86,14 +103,14 @@ export const Formulario = ({ cliente }) => {
 					type="text"
 					name="empresa"
 					className={`bg-white w-full placeholder:italic border  block  rounded-md py-2 px-3 shadow-sm shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 ${
-						inputInteractuado
+						inputInteractuadoEm
 							? verificarCaracteres(empresa)
 								? "focus:border-sky-500 focus:ring-sky-500 border border-slate-300 "
 								: " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
 							: ""
 					}   `}
 					placeholder={
-						inputInteractuado
+						inputInteractuadoEm
 							? verificarCaracteres(empresa)
 								? ""
 								: "El campo Empresa es requerido"
@@ -114,14 +131,14 @@ export const Formulario = ({ cliente }) => {
 					type="email"
 					name="email"
 					className={`bg-white w-full placeholder:italic border  block  rounded-md py-2 px-3 shadow-sm shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 ${
-						inputInteractuado
+						inputInteractuadoEmail
 							? verificarCaracteres(email)
 								? "focus:border-sky-500 focus:ring-sky-500 border border-slate-300 "
 								: " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
 							: ""
 					}   `}
 					placeholder={
-						inputInteractuado
+						inputInteractuadoEmail
 							? verificarCaracteres(email)
 								? ""
 								: "El campo E-mail es requerido"
@@ -142,14 +159,14 @@ export const Formulario = ({ cliente }) => {
 					type="tel"
 					name="telefono"
 					className={`bg-white w-full placeholder:italic border  block  rounded-md py-2 px-3 shadow-sm shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 ${
-						inputInteractuado
+						inputInteractuadoTe
 							? verificarCaracteres(telefono)
 								? "focus:border-sky-500 focus:ring-sky-500 border border-slate-300 "
 								: " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
 							: ""
 					}   `}
 					placeholder={
-						inputInteractuado
+						inputInteractuadoTe
 							? verificarCaracteres(telefono)
 								? ""
 								: "El campo Teléfono es requerido"
@@ -171,14 +188,14 @@ export const Formulario = ({ cliente }) => {
 					type="text"
 					name="notas"
 					className={`bg-white w-full placeholder:italic border  block  rounded-md py-2 px-3 shadow-sm shadow-black/50 focus:outline-none sm:text-sm text-slate-700 font-semibold text-base focus:ring-1 h-40 align-self ${
-						inputInteractuado
+						inputInteractuadoNo
 							? verificarCaracteres(notas)
 								? "focus:border-sky-500 focus:ring-sky-500 border border-slate-300 "
 								: " placeholder:text-red-600/60 focus:border-red-500 focus:ring-red-500 border border-red-600"
 							: ""
 					}   `}
 					placeholder={
-						inputInteractuado
+						inputInteractuadoNo
 							? verificarCaracteres(notas)
 								? ""
 								: "El campo Notas es requerido"
