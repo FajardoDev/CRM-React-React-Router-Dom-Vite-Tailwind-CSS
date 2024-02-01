@@ -62,8 +62,11 @@ export const Formulario = ({ cliente }) => {
 
 	return (
 		<>
+			<h2 className="text-center text-xl font-extrabold text-indigo-500">
+				Add New Clients
+			</h2>
 			<label className="block mb-4">
-				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-slate-600 font-bold  mt-5">
+				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-indigo-500 font-bold  mt-5">
 					Nombre:
 				</span>
 				<input
@@ -92,7 +95,7 @@ export const Formulario = ({ cliente }) => {
 			</label>
 
 			<label className="block mb-4">
-				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-slate-600 font-bold mt-5">
+				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-indigo-500 font-bold mt-5">
 					Empresa:
 				</span>
 				<input
@@ -120,7 +123,7 @@ export const Formulario = ({ cliente }) => {
 			</label>
 
 			<label className="block mb-4">
-				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-slate-600 font-bold mt-5">
+				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-indigo-500 font-bold mt-5">
 					E-mail:
 				</span>
 				<input
@@ -148,7 +151,7 @@ export const Formulario = ({ cliente }) => {
 			</label>
 
 			<label className="block mb-4">
-				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-slate-600 font-bold mt-5">
+				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-indigo-500 font-bold mt-5">
 					Teléfono:
 				</span>
 				<input
@@ -176,7 +179,7 @@ export const Formulario = ({ cliente }) => {
 			</label>
 
 			<label className="block mb-4" htmlFor="notas">
-				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-slate-600 font-bold mt-5">
+				<span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm  text-slate-300 mb-2 dark:text-indigo-500 font-bold mt-5">
 					Notas:
 				</span>
 				<textarea

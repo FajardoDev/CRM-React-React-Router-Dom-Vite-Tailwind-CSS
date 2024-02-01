@@ -33,10 +33,7 @@ export const Index = () => {
 
 					<tbody>
 						{clientes.map((cliente) => (
-							<Cliente
-								key={cliente.id}
-								cliente={cliente}
-							/>
+							<Cliente key={cliente.id} cliente={cliente} />
 						))}
 					</tbody>
 				</table>

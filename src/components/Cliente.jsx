@@ -50,7 +50,12 @@ export const Cliente = ({ cliente }) => {
 						type="button"
 						className="text-blue-600 hover:text-blue-900 delay-150 font-semibold text-sm uppercase"
 					>
-						Editar
+						<span
+							class="material-symbols-outlined"
+							title="Editar"
+						>
+							edit_square
+						</span>
 					</button>
 					<Form
 						// onSubmit={handleEliminar}
@@ -68,7 +73,12 @@ export const Cliente = ({ cliente }) => {
 							type="submit"
 							className="text-red-600 hover:text-red-900 delay-150 font-semibold text-sm uppercase"
 						>
-							Eliminar
+							<span
+								class="material-symbols-outlined"
+								title="Eliminar"
+							>
+								delete
+							</span>
 						</button>
 					</Form>
 				</td>
